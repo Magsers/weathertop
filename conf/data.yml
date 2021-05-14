@@ -1,0 +1,59 @@
+Reading(r1):
+  code: 800
+  temperature: 0.5
+  windSpeed: 3.5
+  windDirection: 220
+  pressure: 1001
+
+Reading(r2):
+  code: 600
+  temperature: 6.0
+  windSpeed: 2
+  windDirection: 200
+  pressure: 1004
+
+Reading(r3):
+  code: 700
+  temperature: 8.0
+  windSpeed: 1
+  windDirection: 90
+  pressure: 1000
+
+Reading(r4):
+  code: 200
+  temperature: 0.5
+  windSpeed: 3.5
+  windDirection: 120
+  pressure: 999
+
+Station(s1):
+  name: Tramore
+  lat : 52.1623500
+  lng : -7.1524400
+  readings:
+    - r1
+    - r2
+
+Station(s2):
+  name: Dunmore
+  lat : 52.1623500
+  lng : -7.1524400
+  readings:
+    - r3
+    - r4
+
+Member(m1):
+  firstname: homer
+  lastname: simpson
+  email: homer@simpson.com
+  password: secret
+  stations:
+    - s1
+
+Member(m2):
+  firstname: marge
+  lastname: simpson
+  email: marge@simpson.com
+  password: secret
+  stations:
+    - s2

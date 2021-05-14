@@ -1,0 +1,49 @@
+<div class="ui equal width center aligned grid container">
+    <div class="five column row">
+
+        <div class="primary column">
+            <h2>${_station.name}</h2>
+            <p><i class="large tint icon"></i></p>
+            <p>Latitude : ${_station.lat}</p>
+            <p>Longitude : ${_station.lng}</p>
+        </div>
+
+        <div class="red column">
+            <h3>Weather</h3>
+            <p><i class="big ${_station.iconClass}"></i></p>
+            <p color="#DB2828">${_station.weathercode}</p>
+        </div>
+
+        <div class="teal column">
+            <h3>Temperature</h3>
+            <p><i class="big temperature high icon"></i></p>
+            <p>${_station.readings.temperature.last()} C </p>
+            <p>${_station.fahrenheit} F</p>
+            <p>Min : ${_station.minTemp} </p>
+            <p>Max : ${_station.maxTemp} </p>
+            <p><i class="${_station.arrow}"></i> </p>
+        </div>
+
+        <div class="olive column">
+            <h3>Wind</h3>
+            <p><i class="big wind icon"></i></p>
+            <div class="item">${_station.beaufort} bft</div>
+            <div class="item">${_station.compassDirection}</div>
+            <div class="item">Feels like</div>
+            <div class="item">${_station.windChill}</div>
+            <p>Min : ${_station.minWind} bft</p>
+            <p>Max : ${_station.maxWind} bft</p>
+            <p><i class="${_station.windarrow}"></i> </p>
+        </div>
+
+        <div class="purple column">
+            <h3>Pressure</h3>
+            <p><i class="big tachometer alternate icon"></i></p>
+            <p>${_station.readings.pressure.last()} hPa</p>
+            <p>Min : ${_station.minPressure}</p>
+            <p>Max : ${_station.maxPressure}</p>
+            <p><i class="${_station.pressurearrow}"></i> </p>
+        </div>
+
+    </div>
+</div>

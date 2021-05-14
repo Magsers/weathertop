@@ -3,9 +3,22 @@
 # ~~~~
 
 # Home page
-GET     /                                       Start.index
-GET     /dashboard                              Dashboard.index
-GET     /about                                  About.index
+GET    /                                            Start.index
+GET    /dashboard                                   Dashboard.index
+GET    /signup                                      Accounts.signup
+GET    /login                                       Accounts.login
+GET    /profile                                     Accounts.profile
+POST   /register                                    Accounts.register
+POST   /update/{memberId}                           Accounts.editMember
+POST   /authenticate                                Accounts.authenticate
+GET    /logout                                      Accounts.logout
+GET    /dashboard/{id}/deletestation/{stationid}    Dashboard.deleteStation
+GET    /about                                       About.index
+POST   /stations/{id}/addreading                    StationCtrl.addReading
+GET    /stations/{id}                               StationCtrl.index
+POST   /dashboard/addstation                        Dashboard.addStation
+GET    /stations/{id}/deletereading/{readingid}     StationCtrl.deleteReading
+
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

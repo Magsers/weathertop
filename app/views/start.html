@@ -1,13 +1,21 @@
 #{extends 'main.html' /}
 #{set title:'About' /}
 
-#{menu id:"start"/}
+#{welcomemenu id:"start"/}
 
 <section class="ui center aligned middle aligned segment">
   <h1 class="ui header">
-    Welcome to Template 1
+    Welcome to Weather Top 1000
   </h1>
-  <p>
-    To be replaced with content...
-  </p>
 </section>
+
+<div class="ui two column middle aligned grid basic segment">
+  <div class="column">
+    <img class="ui medium rounded image" src="/public/images/start.jpg">
+  </div>
+  <div class="column">
+    #{logintag /}
+  </div>
+</div>
+
+
