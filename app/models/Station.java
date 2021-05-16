@@ -17,7 +17,6 @@ public class Station extends Model
     public float lng;
     @OneToMany(cascade = CascadeType.ALL)
     public List<Reading> readings = new ArrayList<Reading>();
-
     public String weathercode;
     public double fahrenheit;
     public int beaufort;
@@ -42,6 +41,10 @@ public class Station extends Model
         this.name = name;
         this.lat = lat;
         this.lng = lng;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }

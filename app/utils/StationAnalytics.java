@@ -3,58 +3,51 @@ package utils;
 import controllers.StationCtrl;
 import models.Reading;
 import models.Station;
+import play.Logger;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
+import java.util.stream.Stream;
 
 import static jdk.nashorn.internal.objects.NativeMath.round;
 
 public class StationAnalytics {
 
     public static String codeToText(int code) {
-        switch (code) {
-            case 100:
-                return "Clear";
-            case 200:
-                return "Partial Clouds";
-            case 300:
-                return "Cloudy";
-            case 400:
-                return "Light Showers";
-            case 500:
-                return "Heavy Showers";
-            case 600:
-                return "Rain";
-            case 700:
-                return "Snow";
-            case 800:
-                return "Thunder";
-            default:
-                return "error";
-        }
-    }
+       switch (code) {
+           case 100:
+               return "Clear";
+           case 200:
+               return "Partial Clouds";
+           case 300:
+               return "Cloudy";
+           case 400:
+               return "Light Showers";
+           case 500:
+               return "Heavy Showers";
+           case 600:
+               return "Rain";
+           case 700:
+               return "Snow";
+           case 800:
+               return "Thunder";
+           default:
+               return "error";
+       }
+     }
 
     public static String weatherIcon(int code) {
-        switch (code) {
-            case 100:
-                return "sun icon";
-            case 200:
-                return "cloud sun icon";
-            case 300:
-                return "cloud icon";
-            case 400:
-                return "cloud sun rain icon";
-            case 500:
-                return "cloud showers heavy icon";
-            case 600:
-                return "cloud rain icon";
-            case 700:
-                return "snowflake icon";
-            case 800:
-                return "poo storm icon";
-            default:
-                return "error";
-        }
+        HashMap<Integer, String> weatherIcons;
+        weatherIcons = new HashMap<Integer, String>();
+        weatherIcons.put(100, "sun icon");
+        weatherIcons.put(200, "cloud sun icon");
+        weatherIcons.put(300, "cloud icon");
+        weatherIcons.put(400, "cloud sun rain icon");
+        weatherIcons.put(500, "cloud showers heavy icon");
+        weatherIcons.put(600, "cloud rain icon");
+        weatherIcons.put(700, "snowflake icon");
+        weatherIcons.put(800, "poo storm icon");
+        return weatherIcons.get(code);
     }
 
     public static double fahrenheit(double centigrade) {
@@ -189,7 +182,6 @@ public class StationAnalytics {
         return minWind;
     }
 
-
     public static double getMaxWind(List<Reading> readings) {
         Reading reading = null;
         double maxWind = 0.0;
@@ -305,9 +297,15 @@ public class StationAnalytics {
             case 2:
                 return "arrow down icon";
             case 0:
-                return "arrows alternate horizontal icon";
+                return "";
             default:
                 return "error";
         }
+    }
+
+    public static List<Station> alphaStationList(List<Station> stations) {
+        stations.sort(Comparator.comparing(Station::getName));
+        Logger.info("Sorting stations");
+        return stations;
     }
 }

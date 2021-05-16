@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import models.Station;
@@ -55,16 +56,14 @@ public class StationCtrl extends Controller
         redirect ("/stations/" + id);
     }
 
-
     public static void addReading(Long id, int code, double temperature, double windSpeed, double windDirection, int pressure, Date dateTime)
     {
-        Date timeStamp = Calendar.getInstance().getTime();
-        Reading reading = new Reading(code, temperature, windSpeed, windDirection, pressure, timeStamp);
-        Station station = Station.findById(id);
-        Logger.info("Date / Time : " + timeStamp);
-        station.readings.add(reading);
-        station.save();
-        redirect ("/stations/" + id);
-    }
-
+            Date timeStamp = Calendar.getInstance().getTime();
+            Reading reading = new Reading(code, temperature, windSpeed, windDirection, pressure, timeStamp);
+            Station station = Station.findById(id);
+            Logger.info("Date / Time : " + timeStamp);
+            station.readings.add(reading);
+            station.save();
+            redirect("/stations/" + id);
+       }
 }

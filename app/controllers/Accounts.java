@@ -8,17 +8,20 @@ public class Accounts extends Controller
 {
     public static void signup()
     {
+        Logger.info("signing up");
         render("signup.html");
     }
 
     public static void login()
     {
+        Logger.info("login login");
         render("login.html");
     }
 
     public static void profile()
     {
         Member member = Accounts.getLoggedInMember();
+        Logger.info("profile");
         render("profile.html", member);
     }
 
@@ -27,7 +30,8 @@ public class Accounts extends Controller
         Logger.info("Registering new user " + email);
         Member member = new Member(firstname, lastname, email, password);
         member.save();
-        redirect("/");
+        session.put("logged_in_Memberid", member.id);
+        render("profile.html", member);
     }
 
     public static void authenticate(String email, String password)
@@ -41,7 +45,8 @@ public class Accounts extends Controller
             redirect ("/dashboard");
         } else {
             Logger.info("Authentication failed");
-            redirect("/login");
+            String loginFail="Authentication failed, please try again or Register.";
+            render("/login.html", loginFail);
         }
     }
 
@@ -57,7 +62,9 @@ public class Accounts extends Controller
         if (session.contains("logged_in_Memberid")) {
             String memberId = session.get("logged_in_Memberid");
             member = Member.findById(Long.parseLong(memberId));
+            Logger.info("getLoggedinMember ");
         } else {
+            Logger.info("getLoggedinMember login");
             login();
         }
         return member;

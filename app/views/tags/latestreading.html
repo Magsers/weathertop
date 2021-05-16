@@ -1,4 +1,4 @@
-<div class="ui equal width center aligned grid container">
+<div class="ui equal width left aligned padded grid container">
     <div class="five column row">
 
         <div class="primary column">
@@ -21,7 +21,7 @@
             <p>${_station.fahrenheit} F</p>
             <p>Min : ${_station.minTemp} </p>
             <p>Max : ${_station.maxTemp} </p>
-            <p><i class="${_station.arrow}"></i> </p>
+            <p><i class="big ${_station.arrow}"></i> </p>
         </div>
 
         <div class="olive column">
@@ -33,7 +33,7 @@
             <div class="item">${_station.windChill}</div>
             <p>Min : ${_station.minWind} bft</p>
             <p>Max : ${_station.maxWind} bft</p>
-            <p><i class="${_station.windarrow}"></i> </p>
+            <p><i class="big ${_station.windarrow}"></i> </p>
         </div>
 
         <div class="purple column">
@@ -42,7 +42,7 @@
             <p>${_station.readings.pressure.last()} hPa</p>
             <p>Min : ${_station.minPressure}</p>
             <p>Max : ${_station.maxPressure}</p>
-            <p><i class="${_station.pressurearrow}"></i> </p>
+            <p><i class="big ${_station.pressurearrow}"></i> </p>
         </div>
 
     </div>
