@@ -1,21 +1,25 @@
 #{extends 'main.html' /}
 #{set title:'About' /}
-
 #{welcomemenu id:"start"/}
 
-<section class="ui center aligned middle aligned segment">
-  <h1 class="ui header">
-    Welcome to Weather Top 1000
-  </h1>
+<section class="ui blue inverted center aligned middle aligned segment">
+    <h1 class="ui header">
+        Welcome to Weather Top 1000
+    </h1>
 </section>
 
-<div class="ui two column middle aligned grid basic segment">
-  <div class="column">
-    <img class="ui medium rounded image" src="/public/images/start.jpg">
-  </div>
-  <div class="column">
-    #{logintag /}
-  </div>
+<div class="ui three column middle aligned grid basic segment">
+    <div class="column">
+        <img class="ui medium rounded image" src="/public/images/start.jpg">
+    </div>
+    <div class="column">
+        <p>Welcome to the Weather Top 100 app which was designed in conjunction with WeatherTop Inc. </p>
+        <p>Please login if you would like to access your account. You can also register as a new user to
+            start using the Weather Top App straight away. For more information please go to our <a href="about.html">About </a>page.
+    </div>
+    <div class="column">
+        #{logintag /}
+    </div>
 </div>
 
 

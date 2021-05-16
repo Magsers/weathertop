@@ -1,4 +1,12 @@
 #{extends 'main.html' /}
 #{set title:'login' /}
 #{welcomemenu id:"login"/}
-#{logintag loginFail:loginFail /}
+
+<div class="ui inverted two column grid">
+    <div class="column">
+        #{logintag loginFail:loginFail /}
+    </div>
+    <div class="center aligned column">
+        <img class="ui medium image" src="/public/images/windvane.jpg">
+    </div>
+</div>

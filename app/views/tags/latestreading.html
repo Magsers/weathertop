@@ -1,49 +1,68 @@
-<div class="ui equal width left aligned padded grid container">
-    <div class="five column row">
+<div class="ui inverted padded five cards">
 
-        <div class="primary column">
+    <div class="primary card">
+        <div class="content">
+            <span class="ui blue text">
+            <p><i class="right floated large tint icon"></i></p>
             <h2>${_station.name}</h2>
-            <p><i class="large tint icon"></i></p>
             <p>Latitude : ${_station.lat}</p>
             <p>Longitude : ${_station.lng}</p>
+            </span>
         </div>
-
-        <div class="red column">
-            <h3>Weather</h3>
-            <p><i class="big ${_station.iconClass}"></i></p>
-            <p color="#DB2828">${_station.weathercode}</p>
-        </div>
-
-        <div class="teal column">
-            <h3>Temperature</h3>
-            <p><i class="big temperature high icon"></i></p>
-            <p>${_station.readings.temperature.last()} C </p>
-            <p>${_station.fahrenheit} F</p>
-            <p>Min : ${_station.minTemp} </p>
-            <p>Max : ${_station.maxTemp} </p>
-            <p><i class="big ${_station.arrow}"></i> </p>
-        </div>
-
-        <div class="olive column">
-            <h3>Wind</h3>
-            <p><i class="big wind icon"></i></p>
-            <div class="item">${_station.beaufort} bft</div>
-            <div class="item">${_station.compassDirection}</div>
-            <div class="item">Feels like</div>
-            <div class="item">${_station.windChill}</div>
-            <p>Min : ${_station.minWind} bft</p>
-            <p>Max : ${_station.maxWind} bft</p>
-            <p><i class="big ${_station.windarrow}"></i> </p>
-        </div>
-
-        <div class="purple column">
-            <h3>Pressure</h3>
-            <p><i class="big tachometer alternate icon"></i></p>
-            <p>${_station.readings.pressure.last()} hPa</p>
-            <p>Min : ${_station.minPressure}</p>
-            <p>Max : ${_station.maxPressure}</p>
-            <p><i class="big ${_station.pressurearrow}"></i> </p>
-        </div>
-
     </div>
+
+    <div class="ui red card">
+        <div class="content">
+            <span class="ui red text">
+                <p><i class="right floated big ${_station.iconClass}"></i></p>
+                <h3>Weather</h3>
+                <p color="#DB2828">${_station.weathercode}</p>
+            </span>
+        </div>
+    </div>
+
+    <div class="teal card">
+        <div class="content">
+            <span class="ui teal text">
+                <p><i class="right floated big temperature high icon"></i></p>
+                <h3>Temperature</h3>
+                <p>${_station.readings.temperature.last()} C </p>
+                <p>${_station.fahrenheit} F</p>
+                 <i class="right floated big ${_station.arrow}"></i>
+                <p>Min : ${_station.minTemp} </p>
+                <p>Max : ${_station.maxTemp} </p>
+            </span>
+        </div>
+    </div>
+
+    <div class="olive card">
+        <div class="content">
+            <span class="ui olive text">
+                <p><i class="right floated big wind icon"></i></p>
+                <h3>Wind</h3>
+                <div class="item">${_station.beaufort} bft</div>
+                <div class="item">${_station.compassDirection}</div>
+                <div class="item">Feels like : ${_station.windChill}</div>
+                 <i class="right floated big ${_station.windarrow}"></i>
+                <p>Min : ${_station.minWind} bft</p>
+                <p>Max : ${_station.maxWind} bft</p>
+            </span>
+        </div>
+    </div>
+
+    <div class="purple card">
+        <div class="content">
+            <span class="ui purple text">
+                <p><i class="right floated big tachometer alternate icon"></i></p>
+                <h3>Pressure</h3>
+                <p>${_station.readings.pressure.last()} hPa</p>
+                <i class="right floated big ${_station.pressurearrow}"></i>
+                <p>Min : ${_station.minPressure}</p>
+                <p>Max : ${_station.maxPressure}</p>
+            </span>
+        </div>
+    </div>
+
 </div>
+
+

@@ -90,7 +90,8 @@ public class StationAnalytics {
     public static String windCompass(double windDirectionDegrees) {
         String windDirectionText = "";
 
-        if (windDirectionDegrees > 348.75 || windDirectionDegrees <= 11.25) {
+        if ((windDirectionDegrees > 348.75 && windDirectionDegrees < 360)
+                || (windDirectionDegrees > 0 && windDirectionDegrees  <= 11.25)) {
             windDirectionText = "North";
         } else if (windDirectionDegrees > 11.25 && windDirectionDegrees <= 33.75) {
             windDirectionText = "North North East";
@@ -122,6 +123,9 @@ public class StationAnalytics {
             windDirectionText = "North West";
         } else if (windDirectionDegrees > 326.25 && windDirectionDegrees <= 348.75) {
             windDirectionText = "Norht North West";
+        }
+        else {
+            windDirectionText = "Error";
         }
         return windDirectionText;
     }

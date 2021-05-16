@@ -1,18 +1,11 @@
-<div class="ui two column middle aligned grid basic segment">
-    <div class="column">
-        <form class="ui stacked segment form" action="/authenticate" method="POST">
-            <p>${_loginFail}</p>
-            <h3 class="ui header">Log-in</h3>
-            <div class="field">
-                <label>Email</label> <input placeholder="Email" name="email">
-            </div>
-            <div class="field">
-                <label>Password</label> <input type="password" name="password">
-            </div>
-            <button class="ui blue submit button">Login</button>
-        </form>
+<form class="ui stacked blue inverted segment form" action="/authenticate" method="POST">
+    <p><span class="ui large red text">${_loginFail}</span></p>
+    <h3 class="ui header">Log-in</h3>
+    <div class="field">
+        <label>Email</label> <input placeholder="Email" name="email">
     </div>
-    <div class="column">
-        <img class="ui image" src="/public/images/windvane.jpg">
+    <div class="field">
+        <label>Password</label> <input type="password" name="password">
     </div>
-</div>
+    <button class="ui blue submit button">Login</button>
+</form>
