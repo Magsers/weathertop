@@ -2,13 +2,18 @@
 #{set title:'Profile' /}
 #{menu id:"dashboard"/}
 
+<section class="ui inverted purple center aligned middle aligned segment">
+   <span class="ui big black text">
+    <h1><embed>Member Profile</embed></h1>
+    </span>
+</section>
+
 <div class="ui two column grid">
     <div class="column">
         <img class="ui image" src="/public/images/vane.jpg">
     </div>
-
     <div class="column">
-        <h2>Member Profile</h2>
+        <h2>Personal Details</h2>
         <p>Name : ${member.firstname} ${member.lastname}</p>
         <p>Email Address : ${member.email}</p>
         <p>Weather Stations : ${member.stations.name}</p>
@@ -41,4 +46,9 @@
             <button class="ui blue submit button">Save</button>
         </form>
     </div>
+    <div class="column">
+        <img class="ui image" src="/public/images/met.png">
+    </div>
 </div>
+
+#{footer /}

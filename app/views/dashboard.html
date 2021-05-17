@@ -2,6 +2,7 @@
 #{set title:'Dashboard' /}
 #{menu id:"dashboard"/}
 
+#{if stations.size() > 0}
 #{list items:stations, as:'station'}
 <section class="ui segment">
     <div class="two column grid">
@@ -25,4 +26,6 @@
     </section>
 </section>
 #{/list}
+#{/if}
 #{addstation /}
+#{footer /}

@@ -14,6 +14,7 @@ import utils.StationAnalytics;
 import javax.swing.*;
 
 public class StationCtrl extends Controller {
+
   public static void index(Long id) {
     Station station = Station.findById(id);
     Reading latestReading = null;
@@ -39,7 +40,6 @@ public class StationCtrl extends Controller {
       station.windarrow = StationAnalytics.trendArrow(station.windTrend);
       station.pressurearrow = StationAnalytics.trendArrow(station.pressureTrend);
     }
-
     render("station.html", station, latestReading);
   }
 

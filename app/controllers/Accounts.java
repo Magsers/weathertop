@@ -5,6 +5,7 @@ import play.Logger;
 import play.mvc.Controller;
 
 public class Accounts extends Controller {
+
   public static void signup() {
     Logger.info("signing up");
     render("signup.html");
@@ -22,11 +23,19 @@ public class Accounts extends Controller {
   }
 
   public static void register(String firstname, String lastname, String email, String password) {
-    Logger.info("Registering new user " + email);
-    Member member = new Member(firstname, lastname, email, password);
-    member.save();
-    session.put("logged_in_Memberid", member.id);
-    render("profile.html", member);
+    Member m = Member.findByEmail(email);
+    if (m == null) {
+      Logger.info("Registering new user " + email);
+      Member member = new Member(firstname, lastname, email, password);
+      member.save();
+      session.put("logged_in_Memberid", member.id);
+      render("profile.html", member);
+    }
+    else {
+      Logger.info("Email address already in use");
+      String invalidEmail = "Email address already in use. Please try again or Register.";
+      render("/signup.html", invalidEmail);
+    }
   }
 
   public static void authenticate(String email, String password) {
@@ -56,7 +65,6 @@ public class Accounts extends Controller {
       member = Member.findById(Long.parseLong(memberId));
       Logger.info("getLoggedinMember ");
     } else {
-      Logger.info("getLoggedinMember login");
       login();
     }
     return member;

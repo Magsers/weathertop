@@ -13,6 +13,7 @@ import play.mvc.Controller;
 import utils.StationAnalytics;
 
 public class Dashboard extends Controller {
+
   public static void index() {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
@@ -42,7 +43,7 @@ public class Dashboard extends Controller {
         station.pressurearrow = StationAnalytics.trendArrow(station.pressureTrend);
       }
     }
-    render("dashboard.html", member, stations, latestReading);
+      render("dashboard.html", member, stations, latestReading);
   }
 
   public static void addStation(String name, float lat, float lng) {

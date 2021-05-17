@@ -1,12 +1,20 @@
 #{extends 'main.html' /}
-#{set title:'login' /}
+#{set title:'Login' /}
 #{welcomemenu id:"login"/}
+
+<section class="ui inverted olive center aligned middle aligned segment">
+   <span class="ui big black text">
+    <h1><embed>Log In</embed></h1>
+    </span>
+</section>
 
 <div class="ui inverted two column grid">
     <div class="column">
         #{logintag loginFail:loginFail /}
     </div>
-    <div class="center aligned column">
-        <img class="ui medium image" src="/public/images/windvane.jpg">
+    <div class="column">
+        <img class="ui center floated medium image" src="/public/images/windvane.jpg">
     </div>
 </div>
+
+#{footer /}

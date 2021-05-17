@@ -2,10 +2,17 @@
 #{set title:'Signup' /}
 #{welcomemenu id:"signup"/}
 
+<section class="ui inverted brown center aligned middle aligned segment">
+   <span class="ui big black text">
+    <h1><embed>Register</embed></h1>
+    </span>
+</section>
+
 <div class="ui two column grid basic middle aligned segment">
     <div class="column">
-        <form class="ui stacked segment form" action="/register" method="POST">
+        <form class="ui blue stacked segment form" action="/register" method="POST">
             <h3 class="ui header">Register</h3>
+            <p><span class="ui medium red text">${invalidEmail}</span></p>
             <div class="two fields">
                 <div class="field">
                     <label>First Name</label>
@@ -28,6 +35,8 @@
         </form>
     </div>
     <div class="column">
-        <img class="ui image" src="/public/images/compass.jpg">
+        <img class="ui medium image" src="/public/images/compass.jpg">
     </div>
 </div>
+
+#{footer /}
