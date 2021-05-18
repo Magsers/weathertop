@@ -30,8 +30,7 @@ public class Accounts extends Controller {
       member.save();
       session.put("logged_in_Memberid", member.id);
       render("profile.html", member);
-    }
-    else {
+    } else {
       Logger.info("Email address already in use");
       String invalidEmail = "Email address already in use. Please try again or Register.";
       render("/signup.html", invalidEmail);
@@ -74,10 +73,18 @@ public class Accounts extends Controller {
     Member member = Member.findById(memberId);
     member.setFirstName(firstname);
     member.setLastName(lastname);
-    member.setEmail(email);
+    Member m = Member.findByEmail(email);
+    if (email != member.email) {
+      member.setEmail(email);
+    } else {
+      Logger.info("Email address already in use");
+      String invalidEmail = "Email address already in use. Please use a unique email address.";
+      render("/profile.html", member, invalidEmail);
+    }
     member.setPassword(password);
     member.save();
     Logger.info("Editing Member" + member.firstname + member.lastname);
     redirect("/profile");
   }
+
 }

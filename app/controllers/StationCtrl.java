@@ -2,16 +2,14 @@ package controllers;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 
 import models.Station;
 import models.Reading;
 import play.Logger;
 import play.mvc.Controller;
-import utils.StationAnalytics;
-
-import javax.swing.*;
+import utils.Analytics;
+import utils.Conversions;
 
 public class StationCtrl extends Controller {
 
@@ -21,24 +19,24 @@ public class StationCtrl extends Controller {
 
     if (station.readings.size() > 0) {
       latestReading = station.readings.get(station.readings.size() - 1);
-      station.weathercode = StationAnalytics.codeToText(latestReading.code);
-      station.iconClass = StationAnalytics.weatherIcon(latestReading.code);
-      station.fahrenheit = StationAnalytics.fahrenheit(latestReading.temperature);
-      station.beaufort = StationAnalytics.beaufort(latestReading.getWindSpeed());
-      station.compassDirection = StationAnalytics.windCompass(latestReading.windDirection);
-      station.windChill = StationAnalytics.windChillCalc(latestReading.temperature, latestReading.windSpeed);
-      station.minTemp = StationAnalytics.getMinTemp(station.readings);
-      station.maxTemp = StationAnalytics.getMaxTemp(station.readings);
-      station.minWind = StationAnalytics.getMinWind(station.readings);
-      station.maxWind = StationAnalytics.getMaxWind(station.readings);
-      station.minPressure = StationAnalytics.getMinPressure(station.readings);
-      station.maxPressure = StationAnalytics.getMaxPressure(station.readings);
-      station.tempTrend = StationAnalytics.tempRising(station.readings);
-      station.windTrend = StationAnalytics.windRising(station.readings);
-      station.pressureTrend = StationAnalytics.pressureRising(station.readings);
-      station.arrow = StationAnalytics.trendArrow(station.tempTrend);
-      station.windarrow = StationAnalytics.trendArrow(station.windTrend);
-      station.pressurearrow = StationAnalytics.trendArrow(station.pressureTrend);
+      station.weathercode = Conversions.codeToText(latestReading.code);
+      station.iconClass = Conversions.weatherIcon(latestReading.code);
+      station.fahrenheit = Conversions.fahrenheit(latestReading.temperature);
+      station.beaufort = Conversions.beaufort(latestReading.getWindSpeed());
+      station.compassDirection = Conversions.windCompass(latestReading.windDirection);
+      station.windChill = Analytics.windChillCalc(latestReading.temperature, latestReading.windSpeed);
+      station.minTemp = Analytics.getMinTemp(station.readings);
+      station.maxTemp = Analytics.getMaxTemp(station.readings);
+      station.minWind = Analytics.getMinWind(station.readings);
+      station.maxWind = Analytics.getMaxWind(station.readings);
+      station.minPressure = Analytics.getMinPressure(station.readings);
+      station.maxPressure = Analytics.getMaxPressure(station.readings);
+      station.tempTrend = Analytics.tempRising(station.readings);
+      station.windTrend = Analytics.windRising(station.readings);
+      station.pressureTrend = Analytics.pressureRising(station.readings);
+      station.arrow = Analytics.trendArrow(station.tempTrend);
+      station.windarrow = Analytics.trendArrow(station.windTrend);
+      station.pressurearrow = Analytics.trendArrow(station.pressureTrend);
     }
     render("station.html", station, latestReading);
   }
@@ -62,4 +60,6 @@ public class StationCtrl extends Controller {
     station.save();
     redirect("/stations/" + id);
   }
+
+
 }

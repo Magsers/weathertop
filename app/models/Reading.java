@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 import controllers.StationCtrl;
 import play.db.jpa.Model;
-import utils.StationAnalytics;
+import utils.Analytics;
 
 import java.util.Date;
 

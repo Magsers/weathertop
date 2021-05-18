@@ -4,17 +4,14 @@
 
 #{if stations.size() > 0}
 #{list items:stations, as:'station'}
+
 <section class="ui segment">
-    <div class="two column grid">
-        <div class="column">
-            <h2 class="ui header">
-                ${station.name}
-            </h2>
-        </div>
-        <div class="column">
-            <p> Latitude : ${station.lat}, Longitude : ${station.lng}</p>
-        </div>
-    </div>
+    <h2 class="ui header">
+        ${station.name}
+    </h2>
+    <h3>
+        Latitude : ${station.lat}, Longitude : ${station.lng}
+    </h3>
     #{if station.readings.size() > 0} #{latestreading station:station /}#{/if}
     <section class="ui segment">
         <a href="/stations/${station.id}" class="ui icon button">
@@ -27,5 +24,5 @@
 </section>
 #{/list}
 #{/if}
-#{addstation /}
+#{addstation duplicateStation:duplicateStation /}
 #{footer /}
