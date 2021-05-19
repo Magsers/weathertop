@@ -39,7 +39,6 @@ public class Accounts extends Controller {
 
   public static void authenticate(String email, String password) {
     Logger.info("Attempting to authenticate with " + email + ":" + password);
-
     Member member = Member.findByEmail(email);
     if ((member != null) && (member.checkPassword(password) == true)) {
       Logger.info("Authentication successful");
@@ -86,5 +85,4 @@ public class Accounts extends Controller {
     Logger.info("Editing Member" + member.firstname + member.lastname);
     redirect("/profile");
   }
-
 }

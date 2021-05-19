@@ -1,8 +1,5 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import models.Member;
@@ -19,32 +16,12 @@ public class Dashboard extends Controller {
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Station> stations = Analytics.alphaStationList(member.stations);
-    Reading latestReading = null;
+    Reading latestConditions = null;
 
     for (Station station : stations) {
-      if (station.readings.size() > 0) {
-        latestReading = station.readings.get(station.readings.size() - 1);
-        station.weathercode = Conversions.codeToText(latestReading.code);
-        station.iconClass = Conversions.weatherIcon(latestReading.code);
-        station.fahrenheit = Conversions.fahrenheit(latestReading.temperature);
-        station.beaufort = Conversions.beaufort(latestReading.getWindSpeed());
-        station.compassDirection = Conversions.windCompass(latestReading.windDirection);
-        station.windChill = Analytics.windChillCalc(latestReading.temperature, latestReading.windSpeed);
-        station.minTemp = Analytics.getMinTemp(station.readings);
-        station.maxTemp = Analytics.getMaxTemp(station.readings);
-        station.minWind = Analytics.getMinWind(station.readings);
-        station.maxWind = Analytics.getMaxWind(station.readings);
-        station.minPressure = Analytics.getMinPressure(station.readings);
-        station.maxPressure = Analytics.getMaxPressure(station.readings);
-        station.tempTrend = Analytics.tempRising(station.readings);
-        station.windTrend = Analytics.windRising(station.readings);
-        station.pressureTrend = Analytics.pressureRising(station.readings);
-        station.arrow = Analytics.trendArrow(station.tempTrend);
-        station.windarrow = Analytics.trendArrow(station.windTrend);
-        station.pressurearrow = Analytics.trendArrow(station.pressureTrend);
-      }
+      calculations(station);
     }
-    render("dashboard.html", member, stations, latestReading);
+    render("dashboard.html", member, stations, latestConditions);
   }
 
   public static void addStation(String name, float lat, float lng) {
@@ -71,5 +48,33 @@ public class Dashboard extends Controller {
     station.delete();
     Logger.info("Deleting " + station.name);
     redirect("/dashboard");
+  }
+
+  public static Reading calculations(Station station) {
+    Reading latestConditions = null;
+
+    if (station.readings.size() > 0) {
+      latestConditions = station.readings.get(station.readings.size() - 1);
+      station.weathercode = Conversions.codeToText(latestConditions.code);
+      station.iconClass = Conversions.weatherIcon(latestConditions.code);
+      station.fahrenheit = Conversions.fahrenheit(latestConditions.temperature);
+      station.beaufort = Conversions.beaufort(latestConditions.getWindSpeed());
+      station.beaufortLabel = Conversions.beaufortLabel(station.beaufort);
+      station.compassDirection = Conversions.windCompass(latestConditions.windDirection);
+      station.windChill = Analytics.windChillCalc(latestConditions.temperature, latestConditions.windSpeed);
+      station.minTemp = Analytics.getMinTemp(station.readings);
+      station.maxTemp = Analytics.getMaxTemp(station.readings);
+      station.minWind = Analytics.getMinWind(station.readings);
+      station.maxWind = Analytics.getMaxWind(station.readings);
+      station.minPressure = Analytics.getMinPressure(station.readings);
+      station.maxPressure = Analytics.getMaxPressure(station.readings);
+      station.tempTrend = Analytics.tempRising(station.readings);
+      station.windTrend = Analytics.windRising(station.readings);
+      station.pressureTrend = Analytics.pressureRising(station.readings);
+      station.arrow = Analytics.trendArrow(station.tempTrend);
+      station.windarrow = Analytics.trendArrow(station.windTrend);
+      station.pressurearrow = Analytics.trendArrow(station.pressureTrend);
+    }
+    return latestConditions;
   }
 }

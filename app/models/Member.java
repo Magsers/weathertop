@@ -25,10 +25,8 @@ public class Member extends Model {
     this.password = password;
   }
 
-  public static Member findByEmail(String email) { return find("email", email).first(); }
-
-  public boolean checkEmail(String email) {
-    return this.email.equals(email);
+  public static Member findByEmail(String email) {
+    return find("email", email).first();
   }
 
   public boolean checkPassword(String password) {

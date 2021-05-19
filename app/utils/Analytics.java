@@ -8,21 +8,17 @@ import play.Logger;
 
 import java.util.*;
 
-import java.util.stream.Stream;
-
-import static jdk.nashorn.internal.objects.NativeMath.round;
-
 public class Analytics {
 
   public static double windChillCalc(double tempCelcius, double windSpeed) {
-    double windChill = 0.0;
+    double windChill;
     windChill = (13.12 + (0.6215 * tempCelcius) - 11.37 * (Math.pow(windSpeed, 0.16))
         + (0.3965 * tempCelcius) * (Math.pow(windSpeed, 0.16)));
     return Math.round(windChill * 100.0) / 100.0;
   }
 
   public static double getMinTemp(List<Reading> readings) {
-    Reading reading = null;
+    Reading reading;
     double minTemp = 0.0;
 
     if (readings.size() > 0) {
@@ -53,7 +49,7 @@ public class Analytics {
   }
 
   public static double getMinWind(List<Reading> readings) {
-    Reading reading = null;
+    Reading reading;
     double minWind = 0.0;
 
     if (readings.size() > 0) {
@@ -69,7 +65,7 @@ public class Analytics {
   }
 
   public static double getMaxWind(List<Reading> readings) {
-    Reading reading = null;
+    Reading reading;
     double maxWind = 0.0;
 
     if (readings.size() > 0) {
@@ -85,7 +81,7 @@ public class Analytics {
   }
 
   public static double getMinPressure(List<Reading> readings) {
-    Reading reading = null;
+    Reading reading;
     double minPressure = 0.0;
 
     if (readings.size() > 0) {
@@ -101,7 +97,7 @@ public class Analytics {
   }
 
   public static double getMaxPressure(List<Reading> readings) {
-    Reading reading = null;
+    Reading reading;
     double maxPressure = 0.0;
 
     if (readings.size() > 0) {
@@ -117,7 +113,7 @@ public class Analytics {
   }
 
   public static int tempRising(List<Reading> readings) {
-    Reading readingOne, readingTwo, readingThree = null;
+    Reading readingOne, readingTwo, readingThree;
     int rising = 0;
 
     if (readings.size() >= 3) {
@@ -137,7 +133,7 @@ public class Analytics {
   }
 
   public static int windRising(List<Reading> readings) {
-    Reading readingOne, readingTwo, readingThree = null;
+    Reading readingOne, readingTwo, readingThree;
     int rising = 0;
 
     if (readings.size() >= 3) {
@@ -157,7 +153,7 @@ public class Analytics {
   }
 
   public static int pressureRising(List<Reading> readings) {
-    Reading readingOne, readingTwo, readingThree = null;
+    Reading readingOne, readingTwo, readingThree;
     int rising = 0;
 
     if (readings.size() >= 3) {

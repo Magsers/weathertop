@@ -9,34 +9,49 @@
 </section>
 
 <div class="ui two column grid basic middle aligned segment">
-    <div class="column">
-        <form class="ui blue stacked segment form" action="/register" method="POST">
-            <h3 class="ui header">Register</h3>
-            <p><span class="ui medium red text">${invalidEmail}</span></p>
-            <div class="two fields">
-                <div class="field">
-                    <label>First Name</label>
-                    <input placeholder="First Name" type="text" name="firstname">
-                </div>
-                <div class="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" type="text" name="lastname">
-                </div>
-            </div>
-            <div class="field">
-                <label>Email</label>
-                <input placeholder="Email" type="text" name="email">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" name="password">
-            </div>
-            <button class="ui blue submit button">Submit</button>
-        </form>
-    </div>
-    <div class="column">
-        <img class="ui medium image" src="/public/images/compass.jpg">
-    </div>
+  <div class="column">
+    <form name="signup" class="ui blue stacked segment form" action="/register" onsubmit="return validateForm()"
+          method="POST">
+      <h3 class="ui header">Register</h3>
+      <p><span class="ui medium red text">${invalidEmail}</span></p>
+      <div class="two fields">
+        <div class="field">
+          <label>First Name</label>
+          <input placeholder="First Name" type="text" name="firstname">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input placeholder="Last Name" type="text" name="lastname">
+        </div>
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input placeholder="Email" type="text" name="email">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password">
+      </div>
+      <button class="ui blue submit button">Submit</button>
+    </form>
+  </div>
+  <div class="column">
+    <img class="ui medium image" src="/public/images/compass.jpg">
+  </div>
 </div>
+
+<!-- https://www.w3schools.com/howto/howto_js_validation_empty_input.asp-->
+<script>
+    function validateForm() {
+        var fname = document.forms["signup"]["firstname"].value;
+        var lname = document.forms["signup"]["lastname"].value;
+        var email = document.forms["signup"]["email"].value;
+        var pword = document.forms["signup"]["password"].value;
+        if ((fname == "" || fname == null) || (lname == "" || lname == null) || (email == "" || email == null) || (pword == "" || pword == null)) {
+            alert("All fields must be filled in");
+            return false;
+        }
+    }
+</script>
 
 #{footer /}

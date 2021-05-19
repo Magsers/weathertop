@@ -8,37 +8,14 @@ import models.Station;
 import models.Reading;
 import play.Logger;
 import play.mvc.Controller;
-import utils.Analytics;
-import utils.Conversions;
 
 public class StationCtrl extends Controller {
 
   public static void index(Long id) {
     Station station = Station.findById(id);
-    Reading latestReading = null;
-
-    if (station.readings.size() > 0) {
-      latestReading = station.readings.get(station.readings.size() - 1);
-      station.weathercode = Conversions.codeToText(latestReading.code);
-      station.iconClass = Conversions.weatherIcon(latestReading.code);
-      station.fahrenheit = Conversions.fahrenheit(latestReading.temperature);
-      station.beaufort = Conversions.beaufort(latestReading.getWindSpeed());
-      station.compassDirection = Conversions.windCompass(latestReading.windDirection);
-      station.windChill = Analytics.windChillCalc(latestReading.temperature, latestReading.windSpeed);
-      station.minTemp = Analytics.getMinTemp(station.readings);
-      station.maxTemp = Analytics.getMaxTemp(station.readings);
-      station.minWind = Analytics.getMinWind(station.readings);
-      station.maxWind = Analytics.getMaxWind(station.readings);
-      station.minPressure = Analytics.getMinPressure(station.readings);
-      station.maxPressure = Analytics.getMaxPressure(station.readings);
-      station.tempTrend = Analytics.tempRising(station.readings);
-      station.windTrend = Analytics.windRising(station.readings);
-      station.pressureTrend = Analytics.pressureRising(station.readings);
-      station.arrow = Analytics.trendArrow(station.tempTrend);
-      station.windarrow = Analytics.trendArrow(station.windTrend);
-      station.pressurearrow = Analytics.trendArrow(station.pressureTrend);
-    }
-    render("station.html", station, latestReading);
+    Reading latestConditions = null;
+    Dashboard.calculations(station);
+    render("station.html", station, latestConditions);
   }
 
   public static void deletereading(Long id, Long readingid) {

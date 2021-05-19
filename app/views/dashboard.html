@@ -4,25 +4,25 @@
 
 #{if stations.size() > 0}
 #{list items:stations, as:'station'}
-
 <section class="ui segment">
-    <h2 class="ui header">
-        ${station.name}
-    </h2>
-    <h3>
-        Latitude : ${station.lat}, Longitude : ${station.lng}
-    </h3>
-    #{if station.readings.size() > 0} #{latestreading station:station /}#{/if}
-    <section class="ui segment">
-        <a href="/stations/${station.id}" class="ui icon button">
-            <i class="icon folder open"></i>
-        </a>
-        <a href="/dashboard/${member.id}/deletestation/${station.id}" class="ui icon button">
-            <i class="icon trash"></i>
-        </a>
-    </section>
+  <h2 class="ui header">
+    ${station.name}
+  </h2>
+  <h3>
+    Latitude : ${station.lat}, Longitude : ${station.lng}
+  </h3>
+  #{if station.readings.size() > 0} #{latestconditions station:station /}#{/if}
+  <section class="ui segment">
+    <a href="/stations/${station.id}" class="ui icon button">
+      <i class="icon folder open"></i>
+    </a>
+    <a href="/dashboard/${member.id}/deletestation/${station.id}" class="ui icon button">
+      <i class="icon trash"></i>
+    </a>
+  </section>
 </section>
 #{/list}
 #{/if}
+
 #{addstation duplicateStation:duplicateStation /}
 #{footer /}

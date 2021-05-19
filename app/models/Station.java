@@ -19,6 +19,7 @@ public class Station extends Model {
   public String weathercode;
   public double fahrenheit;
   public int beaufort;
+  public String beaufortLabel;
   public String compassDirection;
   public double windChill;
   public String iconClass;

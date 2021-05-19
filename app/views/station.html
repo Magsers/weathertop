@@ -3,12 +3,12 @@
 #{menu id:"dashboard"/}
 
 <section class="ui segment">
-    <h2 class="ui header">
-        ${station.name}
-    </h2>
-    #{if station.readings.size() > 0} #{latestreading station:station /} #{/if}
-    #{listreadings station:station /}
-    #{addreading station:station /}
+  <h2 class="ui header">
+    ${station.name}
+  </h2>
+  #{if station.readings.size() > 0} #{latestconditions station:station /} #{/if}
+  #{listreadings station:station /}
+  #{addreading station:station /}
 </section>
 
 #{footer /}

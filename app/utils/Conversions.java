@@ -27,25 +27,25 @@ public class Conversions {
     }
   }
 
-    public static String weatherIcon(int code) {
-      HashMap<Integer, String> weatherIcons;
-      weatherIcons = new HashMap<Integer, String>();
-      weatherIcons.put(100, "sun icon");
-      weatherIcons.put(200, "cloud sun icon");
-      weatherIcons.put(300, "cloud icon");
-      weatherIcons.put(400, "cloud sun rain icon");
-      weatherIcons.put(500, "cloud showers heavy icon");
-      weatherIcons.put(600, "cloud rain icon");
-      weatherIcons.put(700, "snowflake icon");
-      weatherIcons.put(800, "poo storm icon");
-      return weatherIcons.get(code);
-    }
+  public static String weatherIcon(int code) {
+    HashMap<Integer, String> weatherIcons;
+    weatherIcons = new HashMap<Integer, String>();
+    weatherIcons.put(100, "sun icon");
+    weatherIcons.put(200, "cloud sun icon");
+    weatherIcons.put(300, "cloud icon");
+    weatherIcons.put(400, "cloud sun rain icon");
+    weatherIcons.put(500, "cloud showers heavy icon");
+    weatherIcons.put(600, "cloud rain icon");
+    weatherIcons.put(700, "snowflake icon");
+    weatherIcons.put(800, "poo storm icon");
+    return weatherIcons.get(code);
+  }
 
-    public static double fahrenheit(double centigrade) {
-      double f;
-      f = (centigrade * 9 / 5) + 32;
-      return f;
-    }
+  public static double fahrenheit(double centigrade) {
+    double f;
+    f = (centigrade * 9 / 5) + 32;
+    return f;
+  }
 
   public static int beaufort(double windSpeed) {
     int bf = 0;
@@ -75,6 +75,23 @@ public class Conversions {
       bf = 11;
     }
     return bf;
+  }
+
+  public static String beaufortLabel(int bf) {
+    HashMap<Integer, String> beaufortLabel;
+    beaufortLabel = new HashMap<Integer, String>();
+    beaufortLabel.put(1, "Calm");
+    beaufortLabel.put(2, "Light Air");
+    beaufortLabel.put(3, "Gentle Breeze");
+    beaufortLabel.put(4, "Moderate Breeze");
+    beaufortLabel.put(5, "Fresh Breeze");
+    beaufortLabel.put(6, "Strong Breeze");
+    beaufortLabel.put(7, "Near Gale");
+    beaufortLabel.put(8, "Gale");
+    beaufortLabel.put(9, "Severe Gale");
+    beaufortLabel.put(10, "Strong Storm");
+    beaufortLabel.put(11, "Violent Storm");
+    return beaufortLabel.get(bf);
   }
 
   public static String windCompass(double windDirectionDegrees) {

@@ -9,47 +9,62 @@
 </section>
 
 <div class="ui two column grid">
-    <div class="column">
-        <img class="ui image" src="/public/images/vane.jpg">
-    </div>
-    <div class="column">
-        <h2>Personal Details</h2>
-        <p>Name : ${member.firstname} ${member.lastname}</p>
-        <p>Email Address : ${member.email}</p>
-        <p>Weather Stations : ${member.stations.name}</p>
-        <p><a href="/dashboard">Add Weather Stations</a></p>
-    </div>
+  <div class="column">
+    <img class="ui image" src="/public/images/vane.jpg">
+  </div>
+  <div class="column">
+    <h2>Personal Details</h2>
+    <p>Name : ${member.firstname} ${member.lastname}</p>
+    <p>Email Address : ${member.email}</p>
+    <p>Weather Stations : ${member.stations.name}</p>
+    <p><a href="/dashboard">Add Weather Stations</a></p>
+  </div>
 </div>
 
 <div class="ui two column grid basic middle aligned segment">
-    <div class="column">
-        <form class="ui stacked segment form" action="/update/${member.id}" method="POST">
-            <h3 class="ui header">Edit Personal Details</h3>
-            <div class="two fields">
-                <div class="field">
-                    <label>First Name</label>
-                    <input placeholder="First Name" type="text" value="${member.firstname}" name="firstname">
-                </div>
-                <div class="field">
-                    <label>Last Name</label>
-                    <input placeholder="Last Name" type="text" value="${member.lastname}" name="lastname">
-                </div>
-            </div>
-            <div class="field">
-                <p><span class="ui large red text">${invalidEmail}</span></p>
-                <label>Email</label>
-                <input placeholder="Email" type="text" value="${member.email}" name="email">
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" value="${member.password}" name="password">
-            </div>
-            <button class="ui blue submit button">Save</button>
-        </form>
-    </div>
-    <div class="column">
-        <img class="ui image" src="/public/images/met.png">
-    </div>
+  <div class="column">
+    <form name="editprofile" class="ui stacked segment form" action="/update/${member.id}"
+          onsubmit="return validateForm()" method="POST">
+      <h3 class="ui header">Edit Personal Details</h3>
+      <div class="two fields">
+        <div class="field">
+          <label>First Name</label>
+          <input placeholder="First Name" type="text" value="${member.firstname}" name="firstname">
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input placeholder="Last Name" type="text" value="${member.lastname}" name="lastname">
+        </div>
+      </div>
+      <div class="field">
+        <p><span class="ui large red text">${invalidEmail}</span></p>
+        <label>Email</label>
+        <input placeholder="Email" type="text" value="${member.email}" name="email">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" value="${member.password}" name="password">
+      </div>
+      <button class="ui blue submit button">Save</button>
+    </form>
+  </div>
+  <div class="column">
+    <img class="ui image" src="/public/images/met.png">
+  </div>
 </div>
+
+<!-- https://www.w3schools.com/howto/howto_js_validation_empty_input.asp-->
+<script>
+    function validateForm() {
+        var fname = document.forms["editprofile"]["firstname"].value;
+        var lname = document.forms["editprofile"]["lastname"].value;
+        var email = document.forms["editprofile"]["email"].value;
+        var pword = document.forms["editprofile"]["password"].value;
+        if ((fname == "" || fname == null) || (lname == "" || lname == null) || (email == "" || email == null) || (pword == "" || pword == null)) {
+            alert("All fields must be filled in");
+            return false;
+        }
+    }
+</script>
 
 #{footer /}

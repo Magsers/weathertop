@@ -1,18 +1,18 @@
 <form class="ui stacked segment form" action="/dashboard/addstation" method="POST">
-    <p><span class="ui medium red text">${_duplicateStation}</span></p>
-    <div class="three fields">
-        <div class="field">
-            <label>Station Name</label>
-            <input placeholder="Station" type="text" name="name">
-        </div>
-        <div class="field">
-            <label>Latitude</label>
-            <input placeholder="00.00" type="number" step=".01" min="-90" max="90" name="lat">
-        </div>
-        <div class="field">
-            <label>Longitude</label>
-            <input placeholder="00.00" type="number" step=".01" min="-180" max="180" name="lng">
-        </div>
+  <p><span class="ui medium red text">${_duplicateStation}</span></p>
+  <div class="three fields">
+    <div class="field">
+      <label>Station Name</label>
+      <input placeholder="Station" type="text" name="name">
     </div>
-    <button class="ui blue submit button">Add Station</button>
+    <div class="field">
+      <label>Latitude</label>
+      <input placeholder="00.00" type="number" step=".01" min="-90" max="90" name="lat">
+    </div>
+    <div class="field">
+      <label>Longitude</label>
+      <input placeholder="00.00" type="number" step=".01" min="-180" max="180" name="lng">
+    </div>
+  </div>
+  <button class="ui blue submit button">Add Station</button>
 </form>
