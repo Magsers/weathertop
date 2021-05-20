@@ -61,7 +61,7 @@ public class Accounts extends Controller {
     if (session.contains("logged_in_Memberid")) {
       String memberId = session.get("logged_in_Memberid");
       member = Member.findById(Long.parseLong(memberId));
-      Logger.info("Member : " +memberId);
+      Logger.info("Member : " + memberId);
     } else {
       member = null;
       Logger.info("Member = null ");
@@ -74,7 +74,8 @@ public class Accounts extends Controller {
     member.setFirstName(firstname);
     member.setLastName(lastname);
     Member m = Member.findByEmail(email);
-    if (email != member.email) {
+    if (m == null) {
+      Logger.info("Unique email");
       member.setEmail(email);
     } else {
       Logger.info("Email address already in use");
@@ -93,8 +94,7 @@ public class Accounts extends Controller {
     if (session.contains("logged_in_Memberid")) {
       Logger.info("Member logged in");
       loggedIn = true;
-    }
-    else {
+    } else {
       Logger.info("All members logged out");
       loggedIn = false;
     }
