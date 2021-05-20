@@ -7,18 +7,18 @@ import play.mvc.Controller;
 public class Accounts extends Controller {
 
   public static void signup() {
-    Logger.info("signing up");
+    Logger.info("Rendering sign up");
     render("signup.html");
   }
 
   public static void login() {
-    Logger.info("login login");
+    Logger.info("Rendering Login");
     render("login.html");
   }
 
   public static void profile() {
     Member member = Accounts.getLoggedInMember();
-    Logger.info("profile");
+    Logger.info("Rendering profile");
     render("profile.html", member);
   }
 
@@ -61,9 +61,10 @@ public class Accounts extends Controller {
     if (session.contains("logged_in_Memberid")) {
       String memberId = session.get("logged_in_Memberid");
       member = Member.findById(Long.parseLong(memberId));
-      Logger.info("getLoggedinMember ");
+      Logger.info("Member : " +memberId);
     } else {
-      login();
+      member = null;
+      Logger.info("Member = null ");
     }
     return member;
   }
@@ -85,4 +86,19 @@ public class Accounts extends Controller {
     Logger.info("Editing Member" + member.firstname + member.lastname);
     redirect("/profile");
   }
+
+  public static boolean memberLoggedIn() {
+    boolean loggedIn = false;
+    Member member = null;
+    if (session.contains("logged_in_Memberid")) {
+      Logger.info("Member logged in");
+      loggedIn = true;
+    }
+    else {
+      Logger.info("All members logged out");
+      loggedIn = false;
+    }
+    return loggedIn;
+  }
+
 }

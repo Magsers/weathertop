@@ -9,7 +9,12 @@ import models.*;
 
 public class About extends Controller {
   public static void index() {
-    Logger.info("Rendering About");
-    render("about.html");
+    if (Accounts.memberLoggedIn()) {
+      Member member = Accounts.getLoggedInMember();
+      Logger.info("Logged In Member, Rendering About");
+      render("about.html", member);
+    } else {
+      render("about.html");
+    }
   }
 }

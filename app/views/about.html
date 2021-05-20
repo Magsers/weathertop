@@ -1,6 +1,8 @@
 #{extends 'main.html' /}
 #{set title:'About' /}
-#{menu id:"about"/}
+
+#{if member != null } #{menu id:"about"/} #{/if}
+#{else} #{welcomemenu id:"about"/} #{/else}
 
 <section class="ui inverted orange center aligned middle aligned segment">
    <span class="ui big black text">
