@@ -53,25 +53,25 @@ public class Conversions {
       bf = 0;
     } else if (windSpeed > 1 && windSpeed <= 5) {
       bf = 1;
-    } else if (windSpeed >= 6 && windSpeed <= 11) {
+    } else if (windSpeed > 5 && windSpeed <= 11) {
       bf = 2;
-    } else if (windSpeed >= 12 && windSpeed <= 19) {
+    } else if (windSpeed > 11 && windSpeed <= 19) {
       bf = 3;
-    } else if (windSpeed >= 20 && windSpeed <= 28) {
+    } else if (windSpeed > 19 && windSpeed <= 28) {
       bf = 4;
-    } else if (windSpeed >= 29 && windSpeed <= 38) {
+    } else if (windSpeed > 28 && windSpeed <= 38) {
       bf = 5;
-    } else if (windSpeed >= 39 && windSpeed <= 49) {
+    } else if (windSpeed > 38 && windSpeed <= 49) {
       bf = 6;
-    } else if (windSpeed >= 50 && windSpeed <= 61) {
+    } else if (windSpeed > 49 && windSpeed <= 61) {
       bf = 7;
-    } else if (windSpeed >= 62 && windSpeed <= 74) {
+    } else if (windSpeed > 61 && windSpeed <= 74) {
       bf = 8;
-    } else if (windSpeed >= 75 && windSpeed <= 88) {
+    } else if (windSpeed > 74 && windSpeed <= 88) {
       bf = 9;
-    } else if (windSpeed >= 89 && windSpeed <= 102) {
+    } else if (windSpeed > 88 && windSpeed <= 102) {
       bf = 10;
-    } else if (windSpeed >= 103 && windSpeed <= 117) {
+    } else if (windSpeed > 102 && windSpeed <= 117) {
       bf = 11;
     }
     return bf;
@@ -97,7 +97,7 @@ public class Conversions {
   public static String windCompass(double windDirectionDegrees) {
     String windDirectionText = "";
     if ((windDirectionDegrees > 348.75 && windDirectionDegrees <= 360)
-        || (windDirectionDegrees > 0 && windDirectionDegrees <= 11.25)) {
+        || (windDirectionDegrees >= 0 && windDirectionDegrees <= 11.25)) {
       windDirectionText = "North";
     } else if (windDirectionDegrees > 11.25 && windDirectionDegrees <= 33.75) {
       windDirectionText = "North North East";
@@ -128,7 +128,7 @@ public class Conversions {
     } else if (windDirectionDegrees > 303.75 && windDirectionDegrees <= 326.25) {
       windDirectionText = "North West";
     } else if (windDirectionDegrees > 326.25 && windDirectionDegrees <= 348.75) {
-      windDirectionText = "Norht North West";
+      windDirectionText = "North North West";
     } else {
       windDirectionText = "Error";
     }

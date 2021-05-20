@@ -2,9 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 
-import controllers.StationCtrl;
 import play.db.jpa.Model;
-import utils.Analytics;
 
 import java.util.Date;
 
@@ -27,28 +25,8 @@ public class Reading extends Model {
     this.dateTime = dateTime;
   }
 
-  public int getCode() {
-    return code;
-  }
-
-  public double getTemperature() {
-    return temperature;
-  }
-
   public double getWindSpeed() {
     return windSpeed;
-  }
-
-  public double getWindDirection() {
-    return windDirection;
-  }
-
-  public int getPressure() {
-    return pressure;
-  }
-
-  public Date getDateTime() {
-    return dateTime;
   }
 
 }
