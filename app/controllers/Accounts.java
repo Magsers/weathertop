@@ -1,8 +1,12 @@
 package controllers;
 
 import models.Member;
+import models.Station;
 import play.Logger;
 import play.mvc.Controller;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashSet;
 
 public class Accounts extends Controller {
 
@@ -69,24 +73,15 @@ public class Accounts extends Controller {
     return member;
   }
 
-  public static void editMember(Long memberId, String firstname, String lastname, String email, String password) {
+  public static void editMember(Long memberId, String firstname, String lastname, String password) {
     Member member = Member.findById(memberId);
     member.setFirstName(firstname);
     member.setLastName(lastname);
-    Member m = Member.findByEmail(email);
-    if (m == null) {
-      Logger.info("Unique email");
-      member.setEmail(email);
-    } else {
-      Logger.info("Email address already in use");
-      String invalidEmail = "Email address already in use. Please use a unique email address.";
-      render("/profile.html", member, invalidEmail);
-    }
     member.setPassword(password);
     member.save();
-    Logger.info("Editing Member" + member.firstname + member.lastname);
+    Logger.info("Editing Member : " + member.firstname +" "+ member.lastname);
     redirect("/profile");
-  }
+    }
 
   public static boolean memberLoggedIn() {
     boolean loggedIn = false;
@@ -100,5 +95,4 @@ public class Accounts extends Controller {
     }
     return loggedIn;
   }
-
 }

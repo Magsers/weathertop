@@ -4,7 +4,7 @@
 
 <section class="ui inverted brown center aligned middle aligned segment">
    <span class="ui big black text">
-    <h1><embed>Register</embed></h1>
+    <h1>Register</h1>
     </span>
 </section>
 
@@ -30,8 +30,16 @@
       </div>
       <div class="field">
         <label>Password</label>
-        <input type="password" name="password">
+        <input type="password" name="password" id="password">
       </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" name="confirm_password" id="confirm_password"
+               onkeyup='check();'>
+      </div>
+      <p>
+        <span id='message'></span>
+      </p>
       <button class="ui blue submit button">Submit</button>
     </form>
   </div>
@@ -52,6 +60,18 @@
             return false;
         }
     }
+
+<!-- https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727518
+        var check = function () {
+            if (document.getElementById('password').value ==
+                document.getElementById('confirm_password').value) {
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('message').innerHTML = 'Passwords Matching';
+            } else {
+                document.getElementById('message').style.color = 'red';
+                document.getElementById('message').innerHTML = 'Passwords Not Matching';
+            }
+        }
 </script>
 
 #{footer /}

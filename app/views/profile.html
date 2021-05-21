@@ -37,34 +37,52 @@
         </div>
       </div>
       <div class="field">
-        <p><span class="ui medium red text">${invalidEmail}</span></p>
         <label>Email</label>
-        <input placeholder="Email" type="text" value="${member.email}" name="email">
+        <input placeholder="Email" type="text" value="${member.email}" name="email" readonly>
       </div>
       <div class="field">
         <label>Password</label>
-        <input type="password" value="${member.password}" name="password">
+        <input type="password" value="${member.password}" name="password" id="password" onkeyup='check();'>
       </div>
+      <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" value="${member.password}" name="confirm_password" id="confirm_password"
+               onkeyup='check();'>
+      </div>
+      <p>
+        <span id='message'></span>
+      </p>
       <button class="ui blue submit button">Save</button>
     </form>
   </div>
   <div class="column">
     <img class="ui image" src="/public/images/met.png">
   </div>
-</div>
 
-<!-- https://www.w3schools.com/howto/howto_js_validation_empty_input.asp-->
-<script>
-    function validateForm() {
-        var fname = document.forms["editprofile"]["firstname"].value;
-        var lname = document.forms["editprofile"]["lastname"].value;
-        var email = document.forms["editprofile"]["email"].value;
-        var pword = document.forms["editprofile"]["password"].value;
-        if ((fname == "" || fname == null) || (lname == "" || lname == null) || (email == "" || email == null) || (pword == "" || pword == null)) {
-            alert("All fields must be filled in");
-            return false;
-        }
-    }
-</script>
+  <!-- https://www.w3schools.com/howto/howto_js_validation_empty_input.asp-->
+  <script>
+      function validateForm() {
+          var fname = document.forms["editprofile"]["firstname"].value;
+          var lname = document.forms["editprofile"]["lastname"].value;
+          var email = document.forms["editprofile"]["email"].value;
+          var pword = document.forms["editprofile"]["password"].value;
+          if ((fname == "" || fname == null) || (lname == "" || lname == null) || (email == "" || email == null) || (pword == "" || pword == null)) {
+              alert("All fields must be filled in");
+              return false;
+          }
+      }
 
-#{footer /}
+<!-- https://stackoverflow.com/questions/21727317/how-to-check-confirm-password-field-in-form-without-reloading-page/21727518
+          var check = function () {
+              if (document.getElementById('password').value ==
+                  document.getElementById('confirm_password').value) {
+                  document.getElementById('message').style.color = 'green';
+                  document.getElementById('message').innerHTML = 'Password Matching';
+              } else {
+                  document.getElementById('message').style.color = 'red';
+                  document.getElementById('message').innerHTML = 'Passwords Not Matching';
+              }
+          }
+  </script>
+
+  #{footer /}

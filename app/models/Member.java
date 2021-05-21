@@ -33,6 +33,10 @@ public class Member extends Model {
     return this.password.equals(password);
   }
 
+  public String getEmail() {
+    return email;
+  }
+
   public void setFirstName(String firstname) {
     this.firstname = firstname;
   }
